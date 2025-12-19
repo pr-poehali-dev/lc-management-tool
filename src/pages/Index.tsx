@@ -221,13 +221,207 @@ const Index = () => {
             </Card>
           </TabsContent>
 
-          <TabsContent value="plan-lc">
+          <TabsContent value="plan-lc" className="space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle>План LC</CardTitle>
+                <CardTitle>Поставки в неделю и тренинг</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">Раздел в разработке</p>
+                <div className="overflow-x-auto">
+                  <table className="w-full border-collapse text-sm">
+                    <thead>
+                      <tr className="border-b bg-muted/50">
+                        <th className="text-left p-3">Группа рентабельности</th>
+                        <th className="text-left p-3">Круглосуточный</th>
+                        <th className="text-left p-3">Drive</th>
+                        <th className="text-left p-3">Поставки в неделю</th>
+                        <th className="text-left p-3">Тренинг</th>
+                        <th className="text-left p-3">Группа по выручке</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="border-b">
+                        <td className="p-3">
+                          <div className="bg-muted px-3 py-2 rounded">Группа A</div>
+                        </td>
+                        <td className="p-3">
+                          <div className="bg-muted px-3 py-2 rounded">0</div>
+                        </td>
+                        <td className="p-3">
+                          <div className="bg-muted px-3 py-2 rounded">0</div>
+                        </td>
+                        <td className="p-3">
+                          <Input
+                            type="number"
+                            defaultValue={5}
+                            className="bg-success/10 border-success focus:ring-success font-semibold"
+                          />
+                        </td>
+                        <td className="p-3">
+                          <div className="bg-muted px-3 py-2 rounded">0</div>
+                        </td>
+                        <td className="p-3">
+                          <div className="bg-muted px-3 py-2 rounded">20 500</div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Товарооборот</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 bg-muted/30 rounded-lg">
+                  <div>
+                    <div className="text-xs text-muted-foreground mb-1">ТО</div>
+                    <div className="text-2xl font-bold">11 030 167</div>
+                  </div>
+                  <div>
+                    <div className="text-xs text-muted-foreground mb-1">ТО</div>
+                    <div className="text-2xl font-bold">9 149 708</div>
+                  </div>
+                  <div>
+                    <div className="text-xs text-muted-foreground mb-1">%</div>
+                    <div className="text-2xl font-bold text-success">20,6%</div>
+                  </div>
+                </div>
+
+                <div className="overflow-x-auto">
+                  <table className="w-full border-collapse text-sm">
+                    <thead>
+                      <tr className="border-b bg-muted/50">
+                        <th className="text-left p-3">Период</th>
+                        <th className="text-right p-3">Значение</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="border-b">
+                        <td className="p-3 font-medium">сен.25</td>
+                        <td className="p-3 text-right">
+                          <div className="bg-muted px-3 py-2 rounded inline-block">23 511</div>
+                        </td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="p-3 font-medium">окт.25</td>
+                        <td className="p-3 text-right">
+                          <div className="bg-muted px-3 py-2 rounded inline-block">24 678</div>
+                        </td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="p-3 font-medium">ноя.25</td>
+                        <td className="p-3 text-right">
+                          <div className="bg-muted px-3 py-2 rounded inline-block">19 847</div>
+                        </td>
+                      </tr>
+                      <tr className="border-b bg-primary/5">
+                        <td className="p-3 font-semibold">ТО с НДС</td>
+                        <td className="p-3 text-right">
+                          <div className="bg-muted px-3 py-2 rounded inline-block font-semibold">20 500</div>
+                        </td>
+                      </tr>
+                      <tr className="border-b bg-primary/5">
+                        <td className="p-3 font-semibold">ТО без НДС</td>
+                        <td className="p-3 text-right">
+                          <div className="bg-muted px-3 py-2 rounded inline-block font-semibold">17 009</div>
+                        </td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="p-3 font-medium">НДС проверка</td>
+                        <td className="p-3 text-right">
+                          <div className="bg-muted px-3 py-2 rounded inline-block">21%</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="p-3 font-medium">Количество блюд</td>
+                        <td className="p-3 text-right">
+                          <div className="bg-muted px-3 py-2 rounded inline-block">150 501</div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div className="p-4 bg-primary/5 rounded-lg border-l-4 border-primary">
+                  <div className="text-xs text-muted-foreground mb-1">ТО (итого)</div>
+                  <div className="text-3xl font-bold">76 692 526</div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Бюджет LC</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="overflow-x-auto">
+                  <table className="w-full border-collapse text-sm">
+                    <thead>
+                      <tr className="border-b bg-muted/50">
+                        <th className="text-left p-3">Показатель</th>
+                        <th className="text-right p-3">Значение</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="border-b">
+                        <td className="p-3 font-medium">сен.25</td>
+                        <td className="p-3 text-right">
+                          <div className="bg-muted px-3 py-2 rounded inline-block">15,5%</div>
+                        </td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="p-3 font-medium">окт.25</td>
+                        <td className="p-3 text-right">
+                          <div className="bg-muted px-3 py-2 rounded inline-block">14,4%</div>
+                        </td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="p-3 font-medium">ноя.25</td>
+                        <td className="p-3 text-right">
+                          <div className="bg-muted px-3 py-2 rounded inline-block">14,0%</div>
+                        </td>
+                      </tr>
+                      <tr className="border-b bg-warning/10">
+                        <td className="p-3 font-medium">Отклонение модельного LC от среднего LC за 3 мес</td>
+                        <td className="p-3 text-right">
+                          <div className="bg-warning/20 px-3 py-2 rounded inline-block font-semibold">-100,0%</div>
+                        </td>
+                      </tr>
+                      <tr className="border-b bg-success/5">
+                        <td className="p-3 font-semibold">LC, %</td>
+                        <td className="p-3 text-right">
+                          <Input
+                            type="number"
+                            step="0.01"
+                            defaultValue="0.00"
+                            className="bg-success/10 border-success focus:ring-success font-semibold text-right"
+                          />
+                        </td>
+                      </tr>
+                      <tr className="border-b bg-primary/5">
+                        <td className="p-3 font-semibold">LC бюджет, %</td>
+                        <td className="p-3 text-right">
+                          <div className="bg-muted px-3 py-2 rounded inline-block font-semibold">12,10%</div>
+                        </td>
+                      </tr>
+                      <tr className="border-b">
+                        <td className="p-3 font-medium">ТО бюджет без НДС</td>
+                        <td className="p-3 text-right">
+                          <div className="bg-muted px-3 py-2 rounded inline-block">21 244</div>
+                        </td>
+                      </tr>
+                      <tr className="bg-primary/10">
+                        <td className="p-3 font-bold">Итого бюджет, LC</td>
+                        <td className="p-3 text-right">
+                          <div className="bg-primary/20 px-4 py-2 rounded inline-block font-bold text-lg">2 571</div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </CardContent>
             </Card>
           </TabsContent>
