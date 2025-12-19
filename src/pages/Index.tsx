@@ -52,53 +52,51 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <div className="sticky top-0 z-50 bg-white border-b shadow-sm">
-        <div className="overflow-x-auto">
-          <table className="w-full text-xs">
-            <tbody>
-              <tr className="divide-x">
-                <td className="px-2 py-2 whitespace-nowrap">
-                  <div className="font-medium text-muted-foreground">№</div>
-                  <div className="font-semibold">{restaurantInfo.number}</div>
-                </td>
-                <td className="px-2 py-2 whitespace-nowrap">
-                  <div className="font-medium text-muted-foreground">Дата открытия</div>
-                  <div className="font-semibold">{restaurantInfo.openDate}</div>
-                </td>
-                <td className="px-2 py-2 whitespace-nowrap">
-                  <div className="font-medium text-muted-foreground">Группа</div>
-                  <div className="font-semibold">{restaurantInfo.group}</div>
-                </td>
-                <td className="px-2 py-2 whitespace-nowrap">
-                  <div className="font-medium text-muted-foreground">Регион</div>
-                  <div className="font-semibold">{restaurantInfo.region}</div>
-                </td>
-                <td className="px-2 py-2 whitespace-nowrap">
-                  <div className="font-medium text-muted-foreground">Формат</div>
-                  <div className="font-semibold">{restaurantInfo.format}</div>
-                </td>
-                <td className="px-2 py-2 whitespace-nowrap">
-                  <div className="font-medium text-muted-foreground">ИД</div>
-                  <div className="font-semibold">{restaurantInfo.id}</div>
-                </td>
-                <td className="px-2 py-2 whitespace-nowrap">
-                  <div className="font-medium text-muted-foreground">ОД</div>
-                  <div className="font-semibold">{restaurantInfo.od}</div>
-                </td>
-                <td className="px-2 py-2 whitespace-nowrap">
-                  <div className="font-medium text-muted-foreground">ТУ</div>
-                  <div className="font-semibold">{restaurantInfo.tu}</div>
-                </td>
-                <td className="px-2 py-2 whitespace-nowrap">
-                  <div className="font-medium text-muted-foreground">Общее подр-ие</div>
-                  <div className="font-semibold">{restaurantInfo.subdivision}</div>
-                </td>
-                <td className="px-2 py-2">
-                  <div className="font-medium text-muted-foreground">Ресторан</div>
-                  <div className="font-semibold">{restaurantInfo.restaurant}</div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <div className="container mx-auto px-4 py-3">
+          <div className="grid grid-cols-5 gap-3 mb-3">
+            <div className="border-2 border-orange-500 rounded px-3 py-2">
+              <div className="text-xs text-muted-foreground">№</div>
+              <div className="font-semibold text-sm">{restaurantInfo.number}</div>
+            </div>
+            <div className="border-2 border-orange-500 rounded px-3 py-2">
+              <div className="text-xs text-muted-foreground">Дата открытия</div>
+              <div className="font-semibold text-sm">{restaurantInfo.openDate}</div>
+            </div>
+            <div className="border-2 border-orange-500 rounded px-3 py-2">
+              <div className="text-xs text-muted-foreground">Группа</div>
+              <div className="font-semibold text-sm">{restaurantInfo.group}</div>
+            </div>
+            <div className="border-2 border-orange-500 rounded px-3 py-2">
+              <div className="text-xs text-muted-foreground">Регион</div>
+              <div className="font-semibold text-sm">{restaurantInfo.region}</div>
+            </div>
+            <div className="border-2 border-orange-500 rounded px-3 py-2">
+              <div className="text-xs text-muted-foreground">Формат</div>
+              <div className="font-semibold text-sm">{restaurantInfo.format}</div>
+            </div>
+          </div>
+          <div className="grid grid-cols-5 gap-3">
+            <div className="border-2 border-orange-500 rounded px-3 py-2">
+              <div className="text-xs text-muted-foreground">ИД</div>
+              <div className="font-semibold text-sm">{restaurantInfo.id}</div>
+            </div>
+            <div className="border-2 border-orange-500 rounded px-3 py-2">
+              <div className="text-xs text-muted-foreground">ОД</div>
+              <div className="font-semibold text-sm">{restaurantInfo.od}</div>
+            </div>
+            <div className="border-2 border-orange-500 rounded px-3 py-2">
+              <div className="text-xs text-muted-foreground">ТУ</div>
+              <div className="font-semibold text-sm">{restaurantInfo.tu}</div>
+            </div>
+            <div className="border-2 border-orange-500 rounded px-3 py-2">
+              <div className="text-xs text-muted-foreground">Общее подр-ие</div>
+              <div className="font-semibold text-sm">{restaurantInfo.subdivision}</div>
+            </div>
+            <div className="border-2 border-orange-500 rounded px-3 py-2">
+              <div className="text-xs text-muted-foreground">Ресторан</div>
+              <div className="font-semibold text-sm">{restaurantInfo.restaurant}</div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -245,10 +243,18 @@ const Index = () => {
                           <div className="bg-muted px-3 py-2 rounded">Группа A</div>
                         </td>
                         <td className="p-3">
-                          <div className="bg-muted px-3 py-2 rounded">0</div>
+                          <Input
+                            type="number"
+                            defaultValue={0}
+                            className="bg-success/10 border-success focus:ring-success font-semibold"
+                          />
                         </td>
                         <td className="p-3">
-                          <div className="bg-muted px-3 py-2 rounded">0</div>
+                          <Input
+                            type="number"
+                            defaultValue={1}
+                            className="bg-success/10 border-success focus:ring-success font-semibold"
+                          />
                         </td>
                         <td className="p-3">
                           <Input
@@ -258,7 +264,11 @@ const Index = () => {
                           />
                         </td>
                         <td className="p-3">
-                          <div className="bg-muted px-3 py-2 rounded">0</div>
+                          <Input
+                            type="number"
+                            defaultValue={2}
+                            className="bg-success/10 border-success focus:ring-success font-semibold"
+                          />
                         </td>
                         <td className="p-3">
                           <div className="bg-muted px-3 py-2 rounded">20 500</div>
@@ -275,18 +285,18 @@ const Index = () => {
                 <CardTitle>Товарооборот</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 bg-muted/30 rounded-lg">
-                  <div>
-                    <div className="text-xs text-muted-foreground mb-1">ТО</div>
-                    <div className="text-2xl font-bold">11 030 167</div>
+                <div className="grid grid-cols-3 gap-4">
+                  <div className="border-2 border-orange-500 rounded-lg p-4 bg-muted/30">
+                    <div className="text-xs text-muted-foreground mb-1">сен.25</div>
+                    <div className="text-2xl font-bold">23 511</div>
                   </div>
-                  <div>
-                    <div className="text-xs text-muted-foreground mb-1">ТО</div>
-                    <div className="text-2xl font-bold">9 149 708</div>
+                  <div className="border-2 border-orange-500 rounded-lg p-4 bg-muted/30">
+                    <div className="text-xs text-muted-foreground mb-1">окт.25</div>
+                    <div className="text-2xl font-bold">24 678</div>
                   </div>
-                  <div>
-                    <div className="text-xs text-muted-foreground mb-1">%</div>
-                    <div className="text-2xl font-bold text-success">20,6%</div>
+                  <div className="border-2 border-orange-500 rounded-lg p-4 bg-muted/30">
+                    <div className="text-xs text-muted-foreground mb-1">ноя.25</div>
+                    <div className="text-2xl font-bold">19 847</div>
                   </div>
                 </div>
 
@@ -294,27 +304,27 @@ const Index = () => {
                   <table className="w-full border-collapse text-sm">
                     <thead>
                       <tr className="border-b bg-muted/50">
-                        <th className="text-left p-3">Период</th>
+                        <th className="text-left p-3">Показатель</th>
                         <th className="text-right p-3">Значение</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr className="border-b">
-                        <td className="p-3 font-medium">сен.25</td>
+                        <td className="p-3 font-medium">ТО</td>
                         <td className="p-3 text-right">
-                          <div className="bg-muted px-3 py-2 rounded inline-block">23 511</div>
+                          <div className="bg-muted px-3 py-2 rounded inline-block">11 030 167</div>
                         </td>
                       </tr>
                       <tr className="border-b">
-                        <td className="p-3 font-medium">окт.25</td>
+                        <td className="p-3 font-medium">ТО</td>
                         <td className="p-3 text-right">
-                          <div className="bg-muted px-3 py-2 rounded inline-block">24 678</div>
+                          <div className="bg-muted px-3 py-2 rounded inline-block">9 149 708</div>
                         </td>
                       </tr>
                       <tr className="border-b">
-                        <td className="p-3 font-medium">ноя.25</td>
+                        <td className="p-3 font-medium">%</td>
                         <td className="p-3 text-right">
-                          <div className="bg-muted px-3 py-2 rounded inline-block">19 847</div>
+                          <div className="bg-muted px-3 py-2 rounded inline-block">20,6%</div>
                         </td>
                       </tr>
                       <tr className="border-b bg-primary/5">
@@ -356,7 +366,22 @@ const Index = () => {
               <CardHeader>
                 <CardTitle>Бюджет LC</CardTitle>
               </CardHeader>
-              <CardContent>
+              <CardContent className="space-y-4">
+                <div className="grid grid-cols-3 gap-4">
+                  <div className="border-2 border-orange-500 rounded-lg p-4 bg-muted/30">
+                    <div className="text-xs text-muted-foreground mb-1">сен.25</div>
+                    <div className="text-2xl font-bold">15,5%</div>
+                  </div>
+                  <div className="border-2 border-orange-500 rounded-lg p-4 bg-muted/30">
+                    <div className="text-xs text-muted-foreground mb-1">окт.25</div>
+                    <div className="text-2xl font-bold">14,4%</div>
+                  </div>
+                  <div className="border-2 border-orange-500 rounded-lg p-4 bg-muted/30">
+                    <div className="text-xs text-muted-foreground mb-1">ноя.25</div>
+                    <div className="text-2xl font-bold">14,0%</div>
+                  </div>
+                </div>
+
                 <div className="overflow-x-auto">
                   <table className="w-full border-collapse text-sm">
                     <thead>
@@ -366,24 +391,6 @@ const Index = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr className="border-b">
-                        <td className="p-3 font-medium">сен.25</td>
-                        <td className="p-3 text-right">
-                          <div className="bg-muted px-3 py-2 rounded inline-block">15,5%</div>
-                        </td>
-                      </tr>
-                      <tr className="border-b">
-                        <td className="p-3 font-medium">окт.25</td>
-                        <td className="p-3 text-right">
-                          <div className="bg-muted px-3 py-2 rounded inline-block">14,4%</div>
-                        </td>
-                      </tr>
-                      <tr className="border-b">
-                        <td className="p-3 font-medium">ноя.25</td>
-                        <td className="p-3 text-right">
-                          <div className="bg-muted px-3 py-2 rounded inline-block">14,0%</div>
-                        </td>
-                      </tr>
                       <tr className="border-b bg-warning/10">
                         <td className="p-3 font-medium">Отклонение модельного LC от среднего LC за 3 мес</td>
                         <td className="p-3 text-right">
