@@ -53,10 +53,10 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <div className="sticky top-0 z-50 bg-white border-b shadow-sm">
         <div className="container mx-auto px-4 py-3">
-          <div className="grid grid-cols-5 gap-3 mb-3">
+          <div className="grid grid-cols-4 gap-3 mb-3">
             <div className="border-2 border-orange-500 rounded px-3 py-2">
-              <div className="text-xs text-muted-foreground">№</div>
-              <div className="font-semibold text-sm">{restaurantInfo.number}</div>
+              <div className="text-xs text-muted-foreground">Ресторан</div>
+              <div className="font-semibold text-sm">{restaurantInfo.restaurant}</div>
             </div>
             <div className="border-2 border-orange-500 rounded px-3 py-2">
               <div className="text-xs text-muted-foreground">Дата открытия</div>
@@ -70,12 +70,12 @@ const Index = () => {
               <div className="text-xs text-muted-foreground">Регион</div>
               <div className="font-semibold text-sm">{restaurantInfo.region}</div>
             </div>
+          </div>
+          <div className="grid grid-cols-4 gap-3">
             <div className="border-2 border-orange-500 rounded px-3 py-2">
               <div className="text-xs text-muted-foreground">Формат</div>
-              <div className="font-semibold text-sm">{restaurantInfo.format}</div>
+              <div className="font-semibold text-sm">{restaurantInfo.format} - фудкорт</div>
             </div>
-          </div>
-          <div className="grid grid-cols-5 gap-3">
             <div className="border-2 border-orange-500 rounded px-3 py-2">
               <div className="text-xs text-muted-foreground">ИД</div>
               <div className="font-semibold text-sm">{restaurantInfo.id}</div>
@@ -87,14 +87,6 @@ const Index = () => {
             <div className="border-2 border-orange-500 rounded px-3 py-2">
               <div className="text-xs text-muted-foreground">ТУ</div>
               <div className="font-semibold text-sm">{restaurantInfo.tu}</div>
-            </div>
-            <div className="border-2 border-orange-500 rounded px-3 py-2">
-              <div className="text-xs text-muted-foreground">Общее подр-ие</div>
-              <div className="font-semibold text-sm">{restaurantInfo.subdivision}</div>
-            </div>
-            <div className="border-2 border-orange-500 rounded px-3 py-2">
-              <div className="text-xs text-muted-foreground">Ресторан</div>
-              <div className="font-semibold text-sm">{restaurantInfo.restaurant}</div>
             </div>
           </div>
         </div>
@@ -496,16 +488,29 @@ const Index = () => {
                     </thead>
                     <tbody>
                       <tr className="border-b">
-                        <td className="p-3 text-sm">Норматив часов в сутки</td>
+                        <td className="p-3 text-sm">Норма часов в сутки</td>
                         <td className="p-3">
-                          <Tooltip>
-                            <TooltipTrigger>
-                              <div className="bg-muted px-3 py-2 rounded cursor-not-allowed inline-block">
-                                {nuModel.normHoursPerDay}
-                              </div>
-                            </TooltipTrigger>
-                            <TooltipContent>Рассчитывается автоматически</TooltipContent>
-                          </Tooltip>
+                          <div className="flex items-center gap-2">
+                            <Tooltip>
+                              <TooltipTrigger>
+                                <div className="bg-warning/20 px-3 py-2 rounded cursor-not-allowed inline-block">
+                                  {nuModel.normHoursPerDay}
+                                </div>
+                              </TooltipTrigger>
+                              <TooltipContent>Рассчитывается автоматически</TooltipContent>
+                            </Tooltip>
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => {
+                                const element = document.getElementById('nu-operations-section');
+                                if (element) element.scrollIntoView({ behavior: 'smooth' });
+                              }}
+                              className="whitespace-nowrap"
+                            >
+                              Перейти в операции по НУ
+                            </Button>
+                          </div>
                         </td>
                       </tr>
                       <tr className="border-b">
@@ -561,16 +566,32 @@ const Index = () => {
                         </td>
                       </tr>
                       <tr className="border-b">
-                        <td className="p-3 text-sm">Часы на приемку</td>
+                        <td className="p-3 text-sm">Часы на приемку поставок</td>
                         <td className="p-3">
-                          <Tooltip>
-                            <TooltipTrigger>
-                              <div className="bg-warning/20 px-3 py-2 rounded cursor-not-allowed inline-block">
-                                {nuModel.hoursAcceptance}
-                              </div>
-                            </TooltipTrigger>
-                            <TooltipContent>Рассчитывается автоматически</TooltipContent>
-                          </Tooltip>
+                          <div className="flex items-center gap-2">
+                            <Tooltip>
+                              <TooltipTrigger>
+                                <div className="bg-warning/20 px-3 py-2 rounded cursor-not-allowed inline-block">
+                                  {nuModel.hoursAcceptance}
+                                </div>
+                              </TooltipTrigger>
+                              <TooltipContent>Рассчитывается автоматически</TooltipContent>
+                            </Tooltip>
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => {
+                                setActiveTab('deliveries');
+                                setTimeout(() => {
+                                  const element = document.getElementById('who-accepts-row');
+                                  if (element) element.scrollIntoView({ behavior: 'smooth' });
+                                }, 100);
+                              }}
+                              className="whitespace-nowrap"
+                            >
+                              Перейти в поставки
+                            </Button>
+                          </div>
                         </td>
                       </tr>
                       <tr className="border-b">
@@ -612,7 +633,7 @@ const Index = () => {
                           </Tooltip>
                         </td>
                       </tr>
-                      <tr>
+                      <tr className="border-b">
                         <td className="p-3 text-sm">Комментарий</td>
                         <td className="p-3">
                           <Input
@@ -622,6 +643,14 @@ const Index = () => {
                             placeholder="Введите комментарий"
                             className="bg-success/10 border-success focus:ring-success"
                           />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="p-3 text-sm font-semibold">ФОТ НУ</td>
+                        <td className="p-3">
+                          <div className="bg-muted px-3 py-2 rounded cursor-not-allowed inline-block font-semibold">
+                            100 000 ₽
+                          </div>
                         </td>
                       </tr>
                     </tbody>
@@ -722,7 +751,7 @@ const Index = () => {
                             </div>
                           </td>
                         </tr>
-                        <tr className="border-b bg-success/5">
+                        <tr id="who-accepts-row" className="border-b bg-success/5">
                           <td className="p-3 text-sm font-medium">Кто принимает (ЧБР / НУ / АУП)</td>
                           <td className="p-3">
                             <Select
