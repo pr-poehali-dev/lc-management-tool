@@ -94,7 +94,7 @@ const Index = () => {
 
       <div className="container mx-auto px-4 py-6">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid grid-cols-7 w-full mb-6">
+          <TabsList className="grid grid-cols-8 w-full mb-6">
             <TabsTrigger value="dashboard">
               <Icon name="LayoutDashboard" size={16} className="mr-2" />
               Сводные итоги
@@ -122,6 +122,10 @@ const Index = () => {
             <TabsTrigger value="deliveries">
               <Icon name="Truck" size={16} className="mr-2" />
               Поставки
+            </TabsTrigger>
+            <TabsTrigger value="model-nu-tu">
+              <Icon name="ClipboardList" size={16} className="mr-2" />
+              Модель НУ (ТУ)
             </TabsTrigger>
           </TabsList>
 
@@ -794,6 +798,133 @@ const Index = () => {
                     <Icon name="Save" size={16} className="mr-2" />
                     Сохранить изменения
                   </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="model-nu-tu">
+            <Card>
+              <CardHeader>
+                <CardTitle>Модель НУ (для ТУ)</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="overflow-x-auto">
+                  <div className="flex gap-0 min-w-max">
+                    <div className="w-56 flex-shrink-0">
+                      <div className="h-16 border-b border-r bg-muted/50 flex items-center px-3 font-medium text-sm">
+                        Ресторан
+                      </div>
+                      {[
+                        '0001-МСК, пл Киевского вокзала 2, ТЦ Европейский 4 этаж',
+                        '0002-МСК, ш Ленинградское 16А стр 4, ТЦ Метрополис 3 эт.',
+                        '0015-МСК, наб Пресненская 2, ТЦ Афимол Сити 4 этаж',
+                        '0022-МСК, ул Барклая 10',
+                        '0176-МСК, бул Ходынский 4, ТЦ Авиапарк 4 этаж',
+                        '0498-МСК, просп Ленинградский 76А, ТЦ Метромаркет 3 эт.',
+                        '0644-МСК, ул Адмирала Макарова 6 стр 13, ТЦ Невский пр.',
+                        '0653-МСК, ул Новопетровская 6, ТЦ Петровский 3 этаж',
+                        '0800-МСК, бул Кронштадтский 3а, ТЦ Гавань 2 этаж',
+                        '0941-МСК, просп Ленинградский 36, ТЦ Арена Плаза 1 эт.',
+                      ].map((name, i) => (
+                        <div key={i} className="h-14 border-b border-r flex items-center px-3 gap-2">
+                          <span className="text-xs leading-tight line-clamp-2 flex-1">{name}</span>
+                          <Button size="sm" variant="outline" className="text-xs shrink-0 h-7 px-2">
+                            Перейти
+                          </Button>
+                        </div>
+                      ))}
+                      <div className="h-10 border-r flex items-center px-3 font-semibold text-sm">
+                        Итого:
+                      </div>
+                    </div>
+
+                    <div className="flex-1 overflow-x-auto">
+                      <table className="border-collapse" style={{minWidth: '700px'}}>
+                        <thead>
+                          <tr className="border-b bg-muted/50">
+                            <th className="border-r p-2 text-xs font-medium text-left w-32">
+                              Часы уборки в сутки: норма
+                            </th>
+                            <th className="border-r p-2 text-xs font-medium text-left w-32">
+                              Часы уборки в сутки: цель
+                            </th>
+                            <th className="border-r p-2 text-xs font-medium text-left w-32">
+                              Часы уборки в месяц: норма
+                            </th>
+                            <th className="border-r p-2 text-xs font-medium text-left w-44">
+                              Часы уборки в месяц: цель{' '}
+                              <span className="text-green-600 font-medium">+ добавить дельту</span>
+                            </th>
+                            <th className="border-r p-2 text-xs font-medium text-left w-32">
+                              Часы приемки в месяц: норма
+                            </th>
+                            <th className="border-r p-2 text-xs font-medium text-left w-32">
+                              Часы всего в месяц: цель
+                            </th>
+                            <th className="p-2 text-xs font-medium text-left w-40">
+                              Комментарий от ресторана
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {[0,1,2,3,4,5,6,7,8,9].map((i) => (
+                            <tr key={i} className="border-b">
+                              <td className="border-r p-2">
+                                {i === 0 ? (
+                                  <div className="text-xs text-muted-foreground italic leading-tight">
+                                    Норма(2 числа мес) подгружается ТУ независимо от того заполнил ли ресторан или нет
+                                  </div>
+                                ) : (
+                                  <div className="h-8" />
+                                )}
+                              </td>
+                              <td className="border-r p-2"><div className="h-8" /></td>
+                              <td className="border-r p-2"><div className="h-8" /></td>
+                              <td className="border-r p-2"><div className="h-8" /></td>
+                              <td className="border-r p-2"><div className="h-8" /></td>
+                              <td className="border-r p-2"><div className="h-8" /></td>
+                              <td className="p-2"><div className="h-8" /></td>
+                            </tr>
+                          ))}
+                          <tr>
+                            <td className="border-r p-2 text-center font-medium">+</td>
+                            <td className="border-r p-2 text-center font-medium">+</td>
+                            <td className="border-r p-2"></td>
+                            <td className="border-r p-2 text-center font-medium">+</td>
+                            <td className="border-r p-2"></td>
+                            <td className="border-r p-2 text-center font-medium">+</td>
+                            <td className="p-2"></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 mt-4 flex-wrap">
+                  <Button
+                    className="bg-green-600 hover:bg-green-700 text-white"
+                    onClick={() => {}}
+                  >
+                    Вернуть на доработку + модальное окно комментарий «не согласен» и тд + уведомления на почту
+                  </Button>
+                  <Button
+                    className="bg-green-600 hover:bg-green-700 text-white"
+                    onClick={() => {}}
+                  >
+                    <Icon name="Save" size={16} className="mr-2" />
+                    сохранить
+                  </Button>
+                  <Button
+                    className="bg-green-600 hover:bg-green-700 text-white"
+                    onClick={() => {}}
+                  >
+                    Отправить ОД на согласование
+                  </Button>
+                  <div className="text-sm text-muted-foreground italic self-center">
+                    Что делать если ТУ в отпуске? Кто должен заполнять?
+                  </div>
                 </div>
               </CardContent>
             </Card>
